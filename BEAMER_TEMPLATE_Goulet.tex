@@ -1,0 +1,176 @@
+%\documentclass[11pt]{beamer}
+%\documentclass[11pt,handout]{beamer}
+
+\documentclass[11pt,aspectratio=169]{beamer}
+%\documentclass[11pt,aspectratio=169,handout]{beamer}
+
+\usetheme[compress]{Dresden}
+\usecolortheme{beetle}
+\newcommand*\oldmacro{}%
+\let\oldmacro\insertshorttitle%
+\renewcommand*\insertshorttitle{%
+\oldmacro \hspace{0pt plus 1 filll}{\raggedright\insertframenumber\,/\,\inserttotalframenumber}}
+
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor*{palette sidebar primary}{fg=black}
+\setbeamercolor{structure}{fg=black}
+\setbeamercolor{block title}{bg=beetle@other,fg=white}
+\setbeamercolor{block body}{bg=white,fg=black}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{sections/subsections in toc}[ball]
+\setbeamercolor{section number projected}{bg=beetle@other,fg=white}
+
+\usepackage{graphicx}
+\usepackage{bm}      
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amsfonts,amssymb,latexsym,amscd}
+\usepackage{multirow}
+\usepackage[english]{babel}
+\selectlanguage{english}
+\usepackage[applemac]{inputenc}
+\usepackage{epstopdf}
+\usepackage{soul} 
+\usepackage{array}
+\usepackage{pgfpages}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+\usetikzlibrary{automata}
+
+
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\newcommand*{\red}{\textcolor{red}}
+\newcommand*{\green}{\textcolor{darkgreen}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Notes
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeameroption{hide notes}
+%\setbeameroption{show only notes}
+%\setbeameroption{show notes on second screen=right}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%  HANDOUTS 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%\pgfpagesuselayout{8 on 1}[a4paper,border shrink=5mm] 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% mini frame off bullets %%%
+\makeatletter
+\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+\def\beamer@writeslidentry@miniframesoff{%
+  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+  {%else
+    % removed \addtocontents commands
+    \clearpage\beamer@notesactions%
+  }
+}
+\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+\makeatother
+%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Sources 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[absolute,overlay]{textpos}
+
+\setbeamercolor{framesource}{fg=gray}
+\setbeamerfont{framesource}{size=\tiny}
+
+\newcommand{\source}[1]{\begin{textblock*}{8cm}(7.95cm,7.7cm)
+    \begin{beamercolorbox}[ht=0.5cm,right]{framesource}
+        \usebeamerfont{framesource}\usebeamercolor[fg]{framesource} [{#1}]
+    \end{beamercolorbox}
+\end{textblock*}}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Backup slides 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\backupbegin}{
+   \newcounter{framenumberappendix}
+   \setcounter{framenumberappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \addtocounter{framenumberappendix}{-\value{framenumber}}
+   \addtocounter{framenumber}{\value{framenumberappendix}} 
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%START%%%%
+%%%Front page%%%
+
+\title[Secondary title]{Presentation title}
+\author{Author}
+
+\newcommand{\universitelogo}{\raisebox{-0.2mm}{\includegraphics[height=2mm]{Missing_figure.pdf}}}
+\institute[\universitelogo~University short]{\universitelogo~University name}
+
+\date{\today}
+\begin{frame}
+\titlepage
+
+\end{frame}
+
+%%%Slides%%%
+
+\section[Section short title]{Section title}
+\subsection{subsection}
+\begin{frame}
+\frametitle{Slide title}
+Type your text here - Type your text here - Type your text here - Type your text here - Type your text here \\
+Text \\
+Text \\
+\begin{itemize}
+\item item 1
+\item item 2
+\item item 3
+\end{itemize}
+
+\begin{center}
+Your text is centered - Your text is centered - Your text is centered - Your text is centered - Your text is centered
+\end{center}
+
+\raggedleft\alert{\bf Check the reference in the bottom right corner $\downarrow$}
+
+% for indicating your sources
+\source{put your source here}
+\end{frame}
+
+
+\subsection[Subsection short title]{Subsection long title}
+\begin{frame}
+\frametitle{Two column text}
+
+\begin{columns}
+\begin{column}{0.50\textwidth}
+some text here - some text here - some text here - some text here - some text here - some text here - some text here
+\end{column}
+\begin{column}{0.50\textwidth}
+some text here - some text here - some text here - some text here - some text here - some text here - some text here
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+%% Backup slides
+\backupbegin
+\begin{frame}
+\frametitle{backup slides}
+
+this slide is not in the top outline
+
+\end{frame}
+\backupend
+
+
+\end{document} 

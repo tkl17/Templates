@@ -1,0 +1,103 @@
+\title{Title}
+\author{
+\textsc{Main author}
+and
+\textsc{Co-author\footnote{Corresponding author: email address}}
+\mbox{}\\ 
+\small Department of Civil, Geologic and Mining  Engineering\\
+\small \textsc{Polytechnique Montreal}, \underline{CANADA}\\}
+\date{\today}
+\documentclass[11pt,twoside]{article}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{cite}
+\usepackage{amsmath,amsfonts,amssymb,latexsym,amscd,mathtools}
+\usepackage[english]{babel}
+\selectlanguage{english}
+\usepackage[applemac]{inputenc}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{soul} 
+\usepackage{pdfpages}
+\usepackage{bm}
+\usepackage{subfig}
+%\usepackage{subfigure}
+\usepackage{todonotes}
+\usepackage{microtype}
+\usepackage{url}
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent \todo{To be completed at the end}
+\end{abstract}
+
+\section{How to install?}\label{S:Introduction}
+For editing the paper using \LaTeX, you can either work on the cluster using \emph{Textworks and Jabref} or install it on your computer (MAC: \url{http://www.tug.org/mactex/}, PC: \url{http://miktex.org/2.9/setup/})
+
+\section{How to compile?}
+
+\noindent To compile the document in TeXShop: Command + T\\
+
+\noindent To compile bibliography: ? + T - Cmd + shift + B - Cmd + T 
+
+
+\section{Equations, figures and tables }\label{S:SNAME}
+
+\begin{figure}\centering
+\includegraphics[width=25mm]{Missing_figure.pdf}
+\caption{Figure caption}
+\label{FIG:fig_name}
+\end{figure}
+
+\begin{table}[h]
+\caption{Table caption} 
+\centering
+\begin{tabular}{ccccccccc}
+\toprule
+Regions & S1& B1 & S2 &B2 & S3 & B3 & S4 & B4 \\
+\cmidrule(lr){1-9}
+  S1 & 1& 0.90&  0.92& 0.91  & 0.91&0.90& 0.90&0.90\\
+  B1 &  &1 & 0.87&  0.92   &0.90& 0.90&0.90&0.90  \\
+  S2  &  & &1 &0.86&0.95&0.90&0.90 &0.90 \\
+  B2 &   & &  &1&  0.84 & 0.90 & 0.90 &  0.90    \\
+  S3  &  & & & &1&0.84&  0.90  &0.90\\
+  B3  &  & &sym. &  & &1& 95    &0.90\\
+  S4  & & & & & & & 1& 0.93\\
+  B4  & & & & & & & & 1\\
+\bottomrule
+\end{tabular}
+\label{table:tablename}
+\end{table}
+
+An equation inline in the text $y=ax+b$
+
+A standalone equation:
+\begin{equation}
+\mathbf{y}_{t}=\mathbf{C}_{t}\mathbf{x}_{t}+\mathbf{v}_{t},\quad\left\{\begin{array}{l}
+\mathbf{y}_{t}\sim\mathcal{N}(\mathbb{E}[\mathbf{y}_{t}],\text{cov}[\mathbf{y}_{t}])\\[4pt]
+\mathbf{x}_{t}\sim\mathcal{N}(\bm{\mu}_{t},\bm{\Sigma_{t}})\\[4pt]
+\mathbf{v}_{t}\sim\mathcal{N}(\mathbf{0},\mathbf{R_{t}})
+\end{array}\right.
+\label{EQ:y}
+\end{equation}
+
+To insert a reference: \cite{gelman2014bayesian}
+
+
+\section{Conclusion}\label{S:Conclusion}
+
+
+\section*{Acknowledgements}
+
+\bibliographystyle{plain}
+%\footnotesize
+\bibliography{Goulet_reference_librairy}
+
+
+
+\end{document}

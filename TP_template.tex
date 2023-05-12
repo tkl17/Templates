@@ -1,0 +1,218 @@
+\documentclass[letterpaper]{article}
+\topmargin = 0.8cm
+\oddsidemargin=0.60in % leftmargin is 1 inch
+\textwidth=5.5in
+\linespread{1.1} % Line spacing
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsfonts,amssymb,latexsym,amscd}
+\usepackage{amsmath}
+\usepackage[francais]{babel}
+\usepackage{soul} 
+\usepackage{bm}
+\usepackage{subfigure}
+\usepackage{todonotes}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{pdfpages}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{alltt}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[numbered,framed]{matlab-prettifier}
+%\usepackage{structuralanalysis}
+\usepackage[linkcolor=black,colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{wrapfig}
+\usepackage{lastpage}
+\usepackage[yyyymmdd,hhmmss]{datetime}
+
+\cfoot{}
+\cfoot{\thepage\ of \pageref{LastPage}}
+%\rfoot{[\today]}
+
+
+\oddsidemargin=-0.25in % leftmargin is 1 inch
+\voffset=-0.9in % leftmargin is 1 inch
+\textwidth=7in
+\textheight=9.25in
+\headsep = 36pt
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\newcommand{\courseS}{CIV8530 - Fiabilité des structures et systèmes}
+\newcommand{\deptS}{Département CGM - Polytechnique Montréal}
+\newcommand{\profS}{James-A. Goulet}
+\newcommand{\dateS}{Hiver 2017}
+\newcommand{\titleS}{Travail pratique \#1}
+
+
+\author{\courseS \\ \deptS\\ Enseignant: \profS\\[6pt] \dateS}
+\date{}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[c]{ \sc \courseS \hfill \titleshort\\ \raggedright \deptS \hfill \dateS  }
+\fancyfoot{}
+\fancyfoot[l]{\tiny (Dernière mise à jour : \today, \currenttime)\\[6pt]}
+\fancyfoot[c]{\thepage/\pageref{LastPage}}
+\newcommand{\titleshort}{\titleS}
+
+\begin{document}
+\title{\titleS }
+\section*{Problème \#1}
+
+Les b\^atiments $A$ et $B$ sont situés dans une région sismique active. Le b\^atiment $A$ sera endommagé si l'accélération maximale du sol (aussi connue comme le PGA "Peak Ground Acceleration" ) dépasse 0.3\,g avec un tremblement de terre d'une durée de plus de 15 secondes, ou, si l'accélération maximale du sol dépasse 0.6\,g, qu'importe la durée du tremblement de terre. Le b\^atiment $B$ sera endommagé si l'accélération maximale du sol dépasse $\operatorname{max}(0.5-0.01T, 0.1)$\,g, T représente la durée du tremblement de terre en secondes.
+
+Utilisez un système de coordonnées à deux dimensions (axe horizontal: accélération maximale du sol ($m/s^2$), axe vertical: durée du tremblement de terre ($s$)) afin de décrire l'espace d'échantillonnage. Représentez les événements suivants dans l'espace d'échantillonnage: 
+\begin{enumerate}[a)]
+\item Les bâtiments $A$ et $B$ ne sont pas endommagés,
+\item Le bâtiment $A$ est endommagé et $B$ ne l'est pas,
+\item Le bâtiment $B$ est endommagé et $A$ ne l'est pas,
+\item Le bâtiment $B$ est endommagé.
+\end{enumerate}
+
+%\section*{Problème \#2}
+%Démontrer la loi De Morgan
+%\begin{equation}
+%\overline{\bigcup_{i=1}^{n} E_i} = \bigcap_{i=1}^{n}\overline{E_i}
+%\end{equation}
+%
+%\begin{equation}
+%\overline{\bigcap_{i=1}^{n} E_i} = \bigcup_{i=1}^{n}\overline{E_i}
+%\end{equation}
+%
+%o $E_i, i=1,2,\ldots,n$, sont des évènements quelconques. (indice: vérifier d'abord les lois en utilisant les diagrammes de Venn pour $n=2$. Ensuite, utilisez l'induction afin de généraliser pour $n>2$.)
+
+%\section*{Problème \#2}
+%Les probabilités des évènements $A$, $B$ et $C$ sont\\
+%
+%\begin{tabular}{lll}
+%$\Pr(A)=0.30$ & $\Pr(B)=0.60$ & $\Pr(C)=0.10$\\
+%$\Pr(A\overline{C})=0.25$ & $\Pr(B\cup C)=0.64$&  $\Pr(A\overline{B}|C)=0.20$\\
+%\end{tabular}
+%
+%\medskip
+%De plus, les évènements $A$ et $B$ sont statistiquement   indépendent.
+%\begin{enumerate}[a)]
+%\item Est-ce que les évènements $A$ et $C$ sont statistiquement independent?
+%\item Est-ce que les évènements $B$ et $C$ sont statistiquement independent? 
+%\item Calculez $\Pr(ABC)$
+%\end{enumerate}
+
+\section*{Problème \#2}
+Le suivi électronique des structures (SES) a pour but de déterminer l'état des structures à partir de données enregistrées par des capteurs. Lorsque les données enregistrées sont imprécises, ou lorsque les données enregistrées sont indirectement liées à l'état des structures, la relation entre les données enregistrées et l'état d'une structure est également imprécise.
+
+Soit une structure pouvant \^etre dans un des trois états suivants: $\{$Aucun Dommage (AD), Dommages Légers (LD), Dommages Importants (ID)$\}$. Cette structure dispose d'un système de suivi électronique qui peut indiquer un des quatre états suivants: $\widehat{\mathit{AD}}$, $\widehat{\mathit{LD}}$, $\widehat{\mathit{ID}}$, ou $\widehat{\mathit{IN}}$ ($\widehat{\mathit{IN}}$ : résultats inconcluants). L'information obtenue à partir du SES est caractérisée par des probabilités conditionnelles $\Pr(\text{état indiqué par le SES}|\text{état réel})$. Soient les probabilités conditionnelles représentées par la table suivante:
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{llll}
+\toprule
+& \multicolumn{3}{c}{\parbox{2cm}{\centering État réel de la structure}} \\
+\addlinespace
+État indiqué par le SES & AD & LD & ID\\
+\cmidrule{1-4}
+Aucun Dommage ($\widehat{\mathit{AD}}$) & 0.7 & 0.2 & 0.0\\
+Dommages Légers ($\widehat{\mathit{LD}}$) & 0.2 & 0.6 & 0.2\\
+Dommages Importants ($\widehat{\mathit{ID}}$) & 0.0 & 0.1 & 0.7\\
+Résultats Inconcluants ($\widehat{\mathit{IN}}$) & 0.1 & 0.1 & 0.1\\
+\bottomrule
+\end{tabular}
+\end{table}
+(A noter que pour un système de diagnostic ``exact'', $\Pr(\widehat{E_i}|E_j)=1, \forall~ i=j$ et $\Pr(\widehat{E_i}|E_j)=0, \forall~ i\neq j$.) 
+
+Supposons que notre connaissance a priori des probabilités d'avoir un état de dommage suite à un tremblement de terre est: $\Pr(\mathit{AD}=0.2)$, $\Pr(\mathit{LD}=0.3)$ et $\Pr(\mathit{ID}=0.5)$ 
+
+\begin{enumerate}[a)]
+\item Quelle est la probabilité que le système de suivi électronique indique $\widehat{\mathit{AD}}$, $\widehat{\mathit{LD}}$, $\widehat{\mathit{ID}}$ ou $\widehat{\mathit{IN}}$ suite à un tremblement de terre?  
+\item Supposons qu'à la suite à un tremblement de terre le système de suivi électronique indique l'un des états $\widehat{\mathit{AD}}$, $\widehat{\mathit{LD}}$, $\widehat{\mathit{ID}}$ ou $\widehat{\mathit{IN}}$. Construire une table indiquant quelle est la probabilité $\Pr(\text{état réel}|\text{état indiqué par le SES})$ pour chaque état possible.
+
+\end{enumerate}
+\newpage
+\section*{Problème \#3}
+Soit les variables aléatoires $X$ et $Y$ décrites par la densité de probabilité cumulative bi-variée (CDF)
+\begin{equation}
+F(x,y)=-\exp(-(x+y)^2)+\exp(-x)+\exp(-y),\quad x>0, y>0 
+\end{equation} 
+
+\noindent Déterminer:
+\begin{enumerate}[a)]
+\item La densité de probabilité bi-variée de $X$ et $Y$.
+\item La densité de probabilité marginale de $X$.
+\item La densité de probabilité conditionnelle de $X$ étant donné $Y$.
+\item La probabilité que $X>1$ étant donné que $Y=3$.
+%\item La probabilité que $X>4$ étant donné que $Y\leq2$.
+%\item Les moyennes, écart types et coefficients de corrélations de $X$ et $Y$. (note: Vous pouvez utiliser une intégration numérique pour calculer le coefficient de correlation.
+\end{enumerate}
+
+\subsection*{Piste de démarrage}
+
+\begin{lstlisting}[style=Matlab-editor]
+%%Code snippet - Matlab symbolic toolbox 
+clear
+clc
+x=sym('x','positive'); %symboblic def. of x as strictly >0
+y=sym('y','positive'); %symboblic def. of x as strictly >0
+F_xy=1-exp(-x)-exp(-y)+exp(-x-y-x*y) %Symbolic definition of the joint PDF
+\end{lstlisting}
+
+$$\frac{df_{X}(x)}{dx}=\text{\lstinline[style=Matlab-editor]!diff(f_x,x)!}$$
+$$\frac{\partial f_{XY}(x,y)}{\partial x\partial y}=\text{\lstinline[style=Matlab-editor]!diff(diff(f_xy,x),y)!}$$
+$$\int_{0}^{\infty}f_{X}(x)dx=\text{\lstinline[style=Matlab-editor]!int(f_x,x,0,inf)!}$$
+$$f_{X}(x=8)=\text{\lstinline[style=Matlab-editor]!subs(f_x,x,8)!}$$
+
+
+\section*{Problème \#4}
+Une structure est sujette aux charges $X_1$ et $X_2$ ayant comme moyennes $\mu_1=150$ et  $\mu_2=400$, comme écarts types $\sigma_1=10$ et  $\sigma_2=40$, et un coefficient de corrélation $\rho=0.4$. Le moment fléchissant $M$ et l'effort tranchant (V) a un point de la structure sont décrits par  
+\begin{equation}
+M=30X_1+10X_2
+\end{equation}
+\begin{equation}
+V=-3X_1+5X_2
+\end{equation}
+
+\noindent Déterminer: 
+\begin{enumerate}[a)]
+\item les valeurs moyennes $\mu_{M},\,\mu_{V}$
+\item les écarts types $\sigma_{M},\sigma_{V}$
+\item le coefficient de corrélation $\rho_{M,V}$
+\end{enumerate}
+
+\subsection*{Piste de solution}
+
+\begin{lstlisting}[style=Matlab-editor]
+[standard_dev_vector,corr_matrix]=cov2corr(S_MV) %Covatiance matrix -> standard deviation & correlation matrix
+\end{lstlisting}
+
+%\section*{Problème \#5}
+%Le vecteur aléatoire $\mathbf{X}=[X_1, X_2, X_3]^\intercal$ à comme moyenne $\mathbf{M}=[10, 50, 30]^\intercal$ et covariance
+%\begin{equation*}
+%\mathbf{\Sigma}=\left[\begin{array}{ccc}
+%16 & 20 & 4\\
+%20 & 29 & 11\\
+%4 & 11 & 26\\
+%\end{array}\right]
+%\end{equation*}
+%
+%Trouver $\mathbf{A}$ et $\mathbf{B}$ définissant  transformation la transformation dans \emph{l'espace normale centrée réduite} $\mathbf{U}=\mathbf{A}\mathbf{X}+\mathbf{B}$, o $\mathbf{U}=[U_1, U_2, U_3]^\intercal$ est un vecteur aléatoire normal (moyenne égale à zero et une matrice de covariance identitaire). Après avoir déterminé $\mathbf{A}$ et $\mathbf{B}$, calculer les moyennes et la matrice de covariance de $\mathbf{U}$ afin de vérifier vos résultats.
+ 
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
